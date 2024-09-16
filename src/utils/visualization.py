@@ -1,18 +1,23 @@
 from qiskit.visualization import plot_histogram, plot_bloch_multivector
-from qiskit import Aer, execute
+from qiskit_aer import AerSimulator
+import matplotlib.pyplot as plt
 
-def plot_results(circuit):
+def plot_results(circuit, filename="histogram.png"):
     """Execute the circuit and plot the results."""
-    simulator = Aer.get_backend('qasm_simulator')
-    job = execute(circuit, simulator, shots=1000)
-    result = job.result()
+    simulator = AerSimulator()
+    result = simulator.run(circuit, shots=1000).result()
     counts = result.get_counts(circuit)
-    return plot_histogram(counts)
+    histogram = plot_histogram(counts)
+    histogram.savefig(filename)
+    plt.show()
+    return histogram
 
-def plot_statevector(circuit):
+def plot_statevector(circuit, filename="statevector.png"):
     """Execute the circuit and plot the statevector."""
-    simulator = Aer.get_backend('statevector_simulator')
-    job = execute(circuit, simulator)
-    result = job.result()
+    simulator = AerSimulator()
+    result = simulator.run(circuit).result()
     statevector = result.get_statevector(circuit)
-    return plot_bloch_multivector(statevector)
+    bloch_multivector = plot_bloch_multivector(statevector)
+    bloch_multivector.savefig(filename)
+    plt.show()
+    return bloch_multivector
