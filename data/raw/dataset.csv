@@ -1,0 +1,31 @@
+problem_id,problem_type,parameters,algorithm,execution_time,accuracy
+1,Search,"{n: 4, target: 3}",Grover,0.002,0.95
+2,Search,"{n: 8, target: 5}",Grover,0.003,0.92
+3,Factorization,"{number: 15}",Shor,0.004,0.90
+4,Factorization,"{number: 21}",Shor,0.005,0.88
+5,Phase Estimation,"{unitary: 'U', eigenvalue: 0.5}",QPE,0.0035,0.93
+6,Phase Estimation,"{unitary: 'V', eigenvalue: 0.75}",QPE,0.0042,0.89
+7,Search,"{n: 16, target: 10}",Grover,0.006,0.91
+8,Factorization,"{number: 35}",Shor,0.007,0.87
+9,Phase Estimation,"{unitary: 'W', eigenvalue: 0.25}",QPE,0.005,0.92
+10,Search,"{n: 32, target: 20}",Grover,0.008,0.90
+11,Factorization,"{number: 77}",Shor,0.009,0.85
+12,Phase Estimation,"{unitary: 'X', eigenvalue: 0.33}",QPE,0.0055,0.91
+13,Search,"{n: 64, target: 40}",Grover,0.010,0.89
+14,Factorization,"{number: 143}",Shor,0.011,0.83
+15,Phase Estimation,"{unitary: 'Y', eigenvalue: 0.67}",QPE,0.006,0.90
+16,Search,"{n: 128, target: 80}",Grover,0.012,0.88
+17,Factorization,"{number: 221}",Shor,0.013,0.82
+18,Phase Estimation,"{unitary: 'Z', eigenvalue: 0.5}",QPE,0.0065,0.89
+19,Search,"{n: 256, target: 160}",Grover,0.014,0.87
+20,Factorization,"{number: 323}",Shor,0.015,0.81
+21,Phase Estimation,"{unitary: 'A', eigenvalue: 0.1}",QPE,0.007,0.88
+22,Search,"{n: 512, target: 320}",Grover,0.016,0.86
+23,Factorization,"{number: 437}",Shor,0.017,0.80
+24,Phase Estimation,"{unitary: 'B', eigenvalue: 0.2}",QPE,0.0075,0.87
+25,Search,"{n: 1024, target: 640}",Grover,0.018,0.85
+26,Factorization,"{number: 551}",Shor,0.019,0.79
+27,Phase Estimation,"{unitary: 'C', eigenvalue: 0.3}",QPE,0.008,0.86
+28,Search,"{n: 2048, target: 1280}",Grover,0.020,0.84
+29,Factorization,"{number: 667}",Shor,0.021,0.78
+30,Phase Estimation,"{unitary: 'D', eigenvalue: 0.4}",QPE,0.0085,0.85
