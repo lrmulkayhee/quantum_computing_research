@@ -1,7 +1,15 @@
 import pandas as pd
 import json
 import os
+import sys
 import matplotlib.pyplot as plt
+
+# Add src directory to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+
+from utils.metrics import calculate_summary_statistics
+from utils.visualization import plot_results
+from utils.helperfunctions import tensor_product  # Example import
 
 # Load the preprocessed dataset
 preprocessed_df = pd.read_pickle('data/preprocessed/preprocessed_data.pkl')
@@ -28,32 +36,16 @@ def analyze_results(df):
         f.write("Experiment started...\n")
     
     # Group by algorithm and calculate mean execution time and accuracy
-    summary = df.groupby('algorithm').agg({
-        'execution_time': 'mean',
-        'accuracy': 'mean'
-    }).reset_index()
+    summary = calculate_summary_statistics(df)
+    
+    # Example usage of a helper function
+    tensor_product_result = tensor_product(summary['execution_time'].values, summary['accuracy'].values)
     
     # Save the summary table
     summary.to_csv('experiments/results/tables/summary_statistics.csv', index=False)
     
-    # Plot the results
-    plt.figure(figsize=(10, 6))
-    plt.bar(summary['algorithm'], summary['execution_time'], color='blue', alpha=0.7, label='Execution Time')
-    plt.xlabel('Algorithm')
-    plt.ylabel('Execution Time (s)')
-    plt.title('Execution Time by Algorithm')
-    plt.legend()
-    plt.savefig('experiments/results/figures/execution_time.png')
-    plt.close()
-    
-    plt.figure(figsize=(10, 6))
-    plt.bar(summary['algorithm'], summary['accuracy'], color='green', alpha=0.7, label='Accuracy')
-    plt.xlabel('Algorithm')
-    plt.ylabel('Accuracy')
-    plt.title('Accuracy by Algorithm')
-    plt.legend()
-    plt.savefig('experiments/results/figures/accuracy.png')
-    plt.close()
+    # Plot the results using the visualization utility
+    plot_results(summary, 'experiments/results/figures/')
     
     # Example: Save a report
     with open('experiments/results/reports/experiment_report.md', 'w') as f:

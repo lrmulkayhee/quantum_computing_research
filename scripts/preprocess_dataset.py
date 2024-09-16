@@ -1,12 +1,16 @@
 import pandas as pd
 import json
+import sys
+import os
+
+# Add src directory to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+
+from utils.data_processing import parse_parameters
+from utils.helperfunctions import normalize_vector  # Example import
 
 # Load the dataset
 df = pd.read_csv('data/raw/dataset.csv')
-
-# Function to parse the parameters column
-def parse_parameters(parameters):
-    return json.loads(parameters.replace("'", '"'))
 
 # Preprocess the dataset
 def preprocess_dataset(df):
@@ -15,6 +19,9 @@ def preprocess_dataset(df):
     
     # Convert the parameters column to a dictionary
     df['parameters'] = df['parameters'].apply(parse_parameters)
+    
+    # Example usage of a helper function
+    df['normalized_parameters'] = df['parameters'].apply(normalize_vector)
     
     return df
 
