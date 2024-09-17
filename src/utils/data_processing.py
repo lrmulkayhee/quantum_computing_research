@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import re
 
 def parse_parameters(parameters):
     """
@@ -11,7 +12,19 @@ def parse_parameters(parameters):
     Returns:
         dict: The parameters as a dictionary.
     """
-    return json.loads(parameters.replace("'", '"'))
+    try:
+        # Replace single quotes with double quotes
+        parameters = parameters.replace("'", '"')
+        
+        # Ensure keys are quoted
+        parameters = re.sub(r'(\w+):', r'"\1":', parameters)
+        
+        # Attempt to load the JSON string
+        return json.loads(parameters)
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        print(f"Problematic string: {parameters}")
+        return {}
 
 def clean_data(df):
     """

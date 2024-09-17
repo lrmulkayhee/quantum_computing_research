@@ -14,3 +14,23 @@ def create_ghz_state(num_qubits):
     for i in range(num_qubits - 1):
         qc.cx(i, i + 1)
     return qc
+
+def prepare_state(parameters):
+    """
+    Prepare the quantum state based on the given parameters.
+    
+    Args:
+        parameters (dict): The parameters for state preparation.
+        
+    Returns:
+        QuantumCircuit: The prepared quantum circuit.
+    """
+    state_type = parameters.get('state_type', 'bell')
+    num_qubits = parameters.get('num_qubits', 2)
+    
+    if state_type == 'bell':
+        return create_bell_state()
+    elif state_type == 'ghz':
+        return create_ghz_state(num_qubits)
+    else:
+        raise ValueError(f"Unknown state type: {state_type}")
