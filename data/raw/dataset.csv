@@ -29,3 +29,16 @@ problem_id,problem_type,parameters,algorithm,execution_time,accuracy
 28,Search,"{n: 2048, target: 1280}",Grover,0.020,0.84
 29,Factorization,"{number: 667}",Shor,0.021,0.78
 30,Phase Estimation,"{unitary: 'D', eigenvalue: 0.4}",QPE,0.0085,0.85
+31,Optimization,"{problem: 'MaxCut'}",QFT,0.005,0.92
+32,Optimization,"{problem: 'Traveling Salesman'}",QAOA,0.006,0.89
+33,Optimization,"{problem: 'Portfolio Optimization'}",VQE,0.007,0.86
+34,Optimization,"{problem: 'Graph Coloring'}",QFT,0.0065,0.91
+35,Optimization,"{problem: 'Knapsack Problem'}",QAOA,0.0075,0.88
+36,Optimization,"{problem: 'Job Scheduling'}",VQE,0.0085,0.85
+37,Search,"{n: 4096, target: 2560}",Grover,0.022,0.83
+38,Factorization,"{number: 783}",Shor,0.023,0.77
+39,Phase Estimation,"{unitary: 'E', eigenvalue: 0.6}",QPE,0.009,0.84
+40,Optimization,"{problem: 'Maximum Clique'}",QFT,0.007,0.90
+41,Optimization,"{problem: 'Vehicle Routing'}",QAOA,0.008,0.87
+42,Optimization,"{problem: 'Facility Location'}",VQE,0.009,0.84
+43,Search,"{n: 8192, target: 5120}",Grover,0.024,0.82
